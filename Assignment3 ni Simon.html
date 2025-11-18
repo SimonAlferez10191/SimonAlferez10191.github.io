@@ -1,128 +1,173 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Assignment #3 - Loops</title>
-
+<head>
+    <title>Beginner Loops Assignment - No Divs</title>
     <style>
-      body {
-        font-family: Arial;
-        margin: 40px;
-        background-color: black
-      }
+        /* Super simple styling for readability */
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: black;
+        }
 
-      h2 {
-        color: rgb(6, 95, 212);
-      }
+        h2 {
+            color: blue;
+        }
 
-      input {
-        height: 30px;
-        width: 200px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 5px;
-      }
+        h3 {
+            color: rgb(29,240,120);
+        }
 
-      .run-button {
-        background-color: rgb(29, 240, 120);
-        color: white;
-        border: none;
-        height: 36px;
-        width: 110px;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-right: 10px;
-        transition: opacity 0.15s;
-      }
+        input[type="number"] {
+            padding: 5px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+        }
 
-      .run-button:hover {
-        opacity: 0.8;
-      }
+        button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-      .run-button:active {
-        opacity: 0.5;
-      }
+        .result-label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
 
-      .clear-button {
-        background-color: white;
-        color: rgb(29, 155, 240);
-        border: 1px solid rgb(29, 155, 240);
-        height: 36px;
-        width: 110px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.15s, color 0.15s;
-      }
-
-      .clear-button:hover {
-        background-color: rgb(29, 155, 240);
-        color: white;
-      }
-
-      #result {
-        margin-top: 15px;
-        font-weight: bold;
-        color: azure
-      }
+        /* Line separator */
+        hr {
+            margin: 20px 0;
+            border: 0;
+            border-top: 1px solid #999;
+        }
+        
+        .enter{
+            color: green
+        }
+        
+        .S {
+            color: white;
+        }
+        
+        .n{
+            color: white;
+        }
     </style>
-  </head>
+</head>
+<body>
 
-  <body>
     <h2>Assignment #3 - Loops</h2>
-    <p>Enter a number (N):</p>
+    
 
-    <!--DISPLAY-->
-    <input type="number" id="num" placeholder="Enter N">
-    <br>
-    <button class="run-button" onclick="calculate()">Run</button>
-    <button class="clear-button" onclick="clearAll()">Clear</button>
-    <!--DISPLAY-->
+    <hr>
 
-    <p id="result"></p>
+    <h3>Factorial (While Loop)</h3>
+    <p class="enter1">Enter a number (N):</p>
+    <input type="number" id="num-factorial" placeholder="Enter N">
+    <button onclick="calculateFactorial()">Compute Factorial</button>
+    <p class="result-label" id="result-factorial">Factorial: </p>
+
+    <hr>
+
+    <h3>Sum (Do-While Loop)</h3>
+    <p class="S">Enter a number (N):</p>
+    <input type="number" id="num-sum" placeholder="Enter N">
+    <button onclick="calculateSum()">Compute Sum</button>
+    <p class="result-label" id="result-sum">Sum: </p>
+
+    <hr>
+
+    <h3>Average (For Loop) of First N Natural Numbers</h3>
+    <p class="N" >Enter a number (N):</p>
+    <input type="number" id="num-average" placeholder="Enter N">
+    <button onclick="calculateAverage()">Compute Average</button>
+    <p class="result-label" id="result-average">Average: </p>
 
     <script>
-      function calculate() {
-        var n = parseInt(document.getElementById("num").value);
-
-        if (isNaN(n) || n <= 0) 
-        {
-          document.getElementById("result").innerText = "Please enter a positive number.";
-          return;
+        // Function to check if the input is a positive number
+        function checkInput(id) {
+            var n = parseInt(document.getElementById(id).value);
+            if (isNaN(n) || n <= 0) {
+                return null; // Invalid input
+            }
+            return n; // Valid positive number
         }
 
-        var factorial = 1;
-        var i = 1;
+        // 1. Factorial using a WHILE loop
+        function calculateFactorial() {
+            var n = checkInput("num-factorial");
+            var resultElement = document.getElementById("result-factorial");
+            
+            if (n === null) {
+                resultElement.innerText = "Factorial: Please enter a positive number.";
+                return;
+            }
 
-        while (i <= n) 
-        {
-          factorial *= i;
-          i++;
+            var factorial = 1;
+            var i = 1;
+
+            // WHILE loop
+            while (i <= n) 
+            {
+                factorial *= i; 
+                i++;            
+            }
+            
+            resultElement.innerText = "Factorial: " + factorial;
         }
 
-        var sum = 0;
-        var a = 1;
-        do 
-        {
-          sum += a;
-          a++;
-        } while (a <= n);
+        // 2. Sum of first N natural numbers using a DO-WHILE loop
+        function calculateSum() {
+            var n = checkInput("num-sum");
+            var resultElement = document.getElementById("result-sum");
 
-        var total = 0;
-        for (var k = 1; k <= n; k++) 
-        {
-          total += k;
+            if (n === null) {
+                resultElement.innerText = "Sum: Please enter a positive number.";
+                return;
+            }
+
+            var sum = 0;
+            var a = 1;
+
+            // DO-WHILE loop
+            if (n >= 1) { 
+                do 
+                {
+                    sum += a;
+                    a++;      
+                } while (a <= n); 
+            } else {
+                 sum = 0; 
+            }
+
+            resultElement.innerText = "Sum: " + sum;
         }
-        var average = total / n;
 
-        document.getElementById("result").innerHTML =
-          "Factorial: " + factorial +
-          "<br>Sum: " + sum +
-          "<br>Average: " + average.toFixed(2);
-      }
+        // 3. Average of first N natural numbers using a FOR loop
+        function calculateAverage() {
+            var n = checkInput("num-average");
+            var resultElement = document.getElementById("result-average");
 
-      function clearAll() {
-        document.getElementById("num").value = "";
-        document.getElementById("result").innerText = "";
-      }
+            if (n === null) {
+                resultElement.innerText = "Average: Please enter a positive number.";
+                return;
+            }
+
+            var sumForAvg = 0;
+            
+            // FOR loop
+            for (var k = 1; k <= n; k++) 
+            {
+                sumForAvg += k; 
+            }
+            
+            var average = sumForAvg / n;
+
+            resultElement.innerText = "Average: " + average.toFixed(2);
+        }
     </script>
-  </body>
+</body>
 </html>
