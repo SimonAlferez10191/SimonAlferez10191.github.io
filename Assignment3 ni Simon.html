@@ -7,15 +7,16 @@
         body {
             font-family: sans-serif;
             margin: 20px;
-            background-color: black;
+            background-color: black; /* changed to black */
+            color: white; /* text color changed to white for visibility */
         }
 
         h2 {
-            color: blue;
+            color: lightblue;
         }
 
         h3 {
-            color: rgb(29,240,120);
+            color: lightgreen;
         }
 
         input[type="number"] {
@@ -35,37 +36,26 @@
         .result-label {
             margin-top: 10px;
             font-weight: bold;
+            color: white;
         }
 
         /* Line separator */
         hr {
             margin: 20px 0;
             border: 0;
-            border-top: 1px solid #999;
-        }
-        
-        .enter{
-            color: green
-        }
-        
-        .S {
-            color: white;
-        }
-        
-        .n{
-            color: white;
+            border-top: 1px solid #666; /* lighter line for dark background */
         }
     </style>
 </head>
 <body>
 
     <h2>Assignment #3 - Loops</h2>
-    
+    <p>Using three different kinds of loops to calculate results.</p>
 
     <hr>
 
     <h3>Factorial (While Loop)</h3>
-    <p class="enter1">Enter a number (N):</p>
+    <p>Enter a number (N):</p>
     <input type="number" id="num-factorial" placeholder="Enter N">
     <button onclick="calculateFactorial()">Compute Factorial</button>
     <p class="result-label" id="result-factorial">Factorial: </p>
@@ -73,7 +63,7 @@
     <hr>
 
     <h3>Sum (Do-While Loop)</h3>
-    <p class="S">Enter a number (N):</p>
+    <p>Enter a number (N):</p>
     <input type="number" id="num-sum" placeholder="Enter N">
     <button onclick="calculateSum()">Compute Sum</button>
     <p class="result-label" id="result-sum">Sum: </p>
@@ -81,7 +71,7 @@
     <hr>
 
     <h3>Average (For Loop) of First N Natural Numbers</h3>
-    <p class="N" >Enter a number (N):</p>
+    <p>Enter a number (N):</p>
     <input type="number" id="num-average" placeholder="Enter N">
     <button onclick="calculateAverage()">Compute Average</button>
     <p class="result-label" id="result-average">Average: </p>
@@ -110,8 +100,7 @@
             var i = 1;
 
             // WHILE loop
-            while (i <= n) 
-            {
+            while (i <= n) {
                 factorial *= i; 
                 i++;            
             }
@@ -134,8 +123,7 @@
 
             // DO-WHILE loop
             if (n >= 1) { 
-                do 
-                {
+                do {
                     sum += a;
                     a++;      
                 } while (a <= n); 
@@ -159,8 +147,7 @@
             var sumForAvg = 0;
             
             // FOR loop
-            for (var k = 1; k <= n; k++) 
-            {
+            for (var k = 1; k <= n; k++) {
                 sumForAvg += k; 
             }
             
