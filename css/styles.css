@@ -104,18 +104,6 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-compute-button {
-        background-color: white;
-        color: rgb(29, 155, 240);
-        border: 1px solid rgb(29, 155, 240);
-        height: 36px;
-        width: 110px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.15s, color 0.15s;
-      }
-
-
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -435,7 +423,88 @@ legend {
   }
 }
 
-.
+.compute-button {
+        background-color: #2A5555;
+        color: white;
+        border: none;
+        height: 100px;
+        width: 110px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: opacity 0.15s;
+      }
+
+      .compute-button:hover {
+        opacity: 0.8;
+      }
+
+      .compute-button:active {
+        opacity: 0.5;
+      }
+
+
+.income-button {
+      background-color: #2A5555;
+        color: white;
+        border: none;
+        height: 100px;
+        width: 110px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: opacity 0.15s;
+      }
+
+      .income-button:hover {
+        opacity: 0.8;
+      }
+
+      .income-button:active {
+        opacity: 0.5;
+      }
+
+.loop-button {
+      background-color: #2A5555;
+        color: white;
+        border: none;
+        height: 100px;
+        width: 110px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: opacity 0.15s;
+      }
+
+      .loop-button:hover {
+        opacity: 0.8;
+      }
+
+      .loop-button:active {
+        opacity: 0.5;
+        
+      }
+.payroll-button {
+      background-color: #2A5555;
+        color: white;
+        border: none;
+        height: 100px;
+        width: 110px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: opacity 0.15s;
+      }
+
+      .payroll-button:hover {
+        opacity: 0.8;
+      }
+
+      .payroll-button:active {
+        opacity: 0.5;
+        
+      }
+
 
 
 legend + * {
