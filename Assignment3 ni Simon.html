@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assignment #3 - Loops</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        margin: 40px;
+        background-color: black
+      }
+
+      h2 {
+        color: rgb(6, 95, 212);
+      }
+
+      input {
+        height: 30px;
+        width: 200px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 5px;
+      }
+
+      .run-button {
+        background-color: rgb(29, 240, 120);
+        color: white;
+        border: none;
+        height: 36px;
+        width: 110px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: opacity 0.15s;
+      }
+
+      .run-button:hover {
+        opacity: 0.8;
+      }
+
+      .run-button:active {
+        opacity: 0.5;
+      }
+
+      .clear-button {
+        background-color: white;
+        color: rgb(29, 155, 240);
+        border: 1px solid rgb(29, 155, 240);
+        height: 36px;
+        width: 110px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.15s, color 0.15s;
+      }
+
+      .clear-button:hover {
+        background-color: rgb(29, 155, 240);
+        color: white;
+      }
+
+      #result {
+        margin-top: 15px;
+        font-weight: bold;
+        color: azure
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Assignment #3 - Loops</h2>
+    <p>Enter a number (N):</p>
+
+    <!--DISPLAY-->
+    <input type="number" id="num" placeholder="Enter N">
+    <br>
+    <button class="run-button" onclick="calculate()">Run</button>
+    <button class="clear-button" onclick="clearAll()">Clear</button>
+    <!--DISPLAY-->
+
+    <p id="result"></p>
+
+    <script>
+      function calculate() {
+        var n = parseInt(document.getElementById("num").value);
+
+        if (isNaN(n) || n <= 0) 
+        {
+          document.getElementById("result").innerText = "Please enter a positive number.";
+          return;
+        }
+
+        var factorial = 1;
+        var i = 1;
+
+        while (i <= n) 
+        {
+          factorial *= i;
+          i++;
+        }
+
+        var sum = 0;
+        var a = 1;
+        do 
+        {
+          sum += a;
+          a++;
+        } while (a <= n);
+
+        var total = 0;
+        for (var k = 1; k <= n; k++) 
+        {
+          total += k;
+        }
+        var average = total / n;
+
+        document.getElementById("result").innerHTML =
+          "Factorial: " + factorial +
+          "<br>Sum: " + sum +
+          "<br>Average: " + average.toFixed(2);
+      }
+
+      function clearAll() {
+        document.getElementById("num").value = "";
+        document.getElementById("result").innerText = "";
+      }
+    </script>
+  </body>
+</html>

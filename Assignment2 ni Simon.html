@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assignment #2 - Income Tax Calculator</title>
+
+    <style>
+      body {
+        background-color: black;
+        font-family: Arial;
+        margin: 40px;
+      }
+
+      h2 {
+        color: rgb(6, 95, 212);
+      }
+
+      input {
+        height: 30px;
+        width: 200px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 5px;
+      }
+
+      .calc-button {
+        background-color: rgb(29, 240, 120);
+        color: white;
+        border: none;
+        height: 36px;
+        width: 110px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: opacity 0.15s;
+      }
+
+      .calc-button:hover {
+        opacity: 0.8;
+      }
+
+      .calc-button:active {
+        opacity: 0.5;
+      }
+
+      .clear-button {
+        background-color: white;
+        color: rgb(29, 155, 240);
+        border: 1px solid rgb(29, 155, 240);
+        height: 36px;
+        width: 110px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.15s, color 0.15s;
+      }
+
+      .clear-button:hover {
+        background-color: rgb(29, 155, 240);
+        color: white;
+      }
+
+      #result {
+        margin-top: 15px;
+        font-weight: bold;
+        color: azure;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Assignment #2 - Income Tax Calculator</h2>
+    <p>Enter your monthly income:</p>
+
+    <input type="number" id="income" placeholder="Enter income (₱)">
+    <br>
+    <button class="calc-button" onclick="computeTax()">Compute</button>
+    <button class="clear-button" onclick="clearTax()">Clear</button>
+
+    <p id="result"></p>
+
+    <script>
+      function computeTax() {
+        var income = parseFloat(document.getElementById("income").value);
+        var tax = 0;
+
+        if (isNaN(income) || income < 0) {
+          document.getElementById("result").innerText = "Please enter a valid income.";
+          return;
+        }
+
+        if (income <= 250000) {
+          tax = 0;
+        } 
+        else if (income > 250000 && income <= 400000) {
+          tax = (income - 250000) * 0.15;
+        } 
+        else if (income > 400000 && income <= 800000) {
+          tax = 22500 + (income - 400000) * 0.20;
+        } 
+        else if (income > 800000 && income <= 2000000) {
+          tax = 102500 + (income - 800000) * 0.25;
+        } 
+        else if (income > 2000000 && income <= 8000000) {
+          tax = 402500 + (income - 2000000) * 0.30;
+        } 
+        else { 
+          tax = 2202500 + (income - 8000000) * 0.35;
+        }
+
+
+        document.getElementById("result").innerText = "Tax Due ₱" + tax.toFixed(2);
+      }
+
+      function clearTax() {
+        document.getElementById("income").value = "";
+        document.getElementById("result").innerText = "";
+      }
+    </script>
+  </body>
+</html>

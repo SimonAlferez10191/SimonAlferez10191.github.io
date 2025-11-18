@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assignment #4 - Simple Payroll</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        margin: 40px;
+        background-color: black;
+      }
+
+      h2 {
+        color: rgb(6, 95, 212);
+      }
+
+      input {
+        height: 30px;
+        width: 200px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 5px;
+      }
+
+      .compute-button {
+        background-color: rgb(29, 240, 120);
+        color: white;
+        border: none;
+        height: 36px;
+        width: 110px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: opacity 0.15s;
+      }
+
+      .compute-button:hover {
+        opacity: 0.8;
+      }
+
+      .compute-button:active {
+        opacity: 0.5;
+      }
+
+      .clear-button {
+        background-color: white;
+        color: rgb(29, 155, 240);
+        border: 1px solid rgb(29, 155, 240);
+        height: 36px;
+        width: 110px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.15s, color 0.15s;
+      }
+
+      .clear-button:hover {
+        background-color: rgb(29, 155, 240);
+        color: white;
+      }
+
+      #result {
+        margin-top: 15px;
+        font-weight: bold;
+        color: azure;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Assignment #4 - Simple Payroll</h2>
+    <p>Enter employee details:</p>
+
+    <!--DISPLAY-->
+    <input type="text" id="name" placeholder="Employee Name"><br>
+    <input type="number" id="rate" placeholder="Rate per Hour (₱)"><br>
+    <input type="number" id="hours" placeholder="Hours Worked"><br>
+
+    <button class="compute-button" onclick="computePayroll()">Compute</button>
+    <button class="clear-button" onclick="clearPayroll()">Clear</button>
+
+    <p id="result"></p>
+    <!--DISPLAY-->
+    <script>
+      function computePayroll() {
+        var name = document.getElementById("name").value;
+        var rate = parseFloat(document.getElementById("rate").value);
+        var hours = parseFloat(document.getElementById("hours").value);
+
+        if (name === "" || isNaN(rate) || isNaN(hours)) {
+          document.getElementById("result").innerText = "Please fill out all fields.";
+          return;
+        }
+
+        var gross = rate * hours;
+        var tax;
+      if (gross <= 250000) {
+        tax = 0;
+      } 
+      else if (gross > 250000 && gross <= 400000) {
+        tax = (gross - 250000) * 0.15;
+      } 
+      else if (gross > 400000 && gross <= 800000) {
+        tax = 22500 + (gross - 400000) * 0.20;
+      } 
+      else if (gross > 800000 && gross <= 2000000) {
+        tax = 102500 + (gross - 800000) * 0.25;
+      } 
+      else if (gross > 2000000 && gross <= 8000000) {
+        tax = 402500 + (gross - 2000000) * 0.30;
+      } 
+      else { 
+        tax = 2202500 + (gross - 8000000) * 0.35;
+      }
+
+
+        var net = gross - tax;
+
+        document.getElementById("result").innerHTML =
+          "Employee: " + name +
+          "<br>Gross Pay: ₱" + gross.toFixed(2) +
+          "<br>Tax (10%): ₱" + tax.toFixed(2) +
+          "<br>Net Pay: ₱" + net.toFixed(2);
+      }
+
+      function clearPayroll() {
+        document.getElementById("name").value = "";
+        document.getElementById("rate").value = "";
+        document.getElementById("hours").value = "";
+        document.getElementById("result").innerText = "";
+      }
+    </script>
+  </body>
+</html>
